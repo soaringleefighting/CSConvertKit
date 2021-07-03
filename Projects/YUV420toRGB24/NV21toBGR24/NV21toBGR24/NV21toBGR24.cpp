@@ -14,16 +14,16 @@ using namespace cv;
 #define CLIP_COLOR(x) ((unsigned char)((x<0)?0:((x>255)?255:x)))
 
 /*********************************************************************
-/* Function: NV21ToBGR24
-/* Usage: colorspace convertion from YUV420SP(NV21) to BGR24
-/* Parameters:
-/* 	pYUV   [In]		- source YUV data
-/*	pBGR24 [Out]	- output RGB data
-/*  width  [In]		- image width
-/*	height [In]		- image height
-/*
-/* Modified: 2019.8.9
-/*********************************************************************/
+  Function: NV21ToBGR24
+  Usage: colorspace convertion from YUV420SP(NV21) to BGR24
+  Parameters:
+ 	pYUV   [In]		- source YUV data
+	pBGR24 [Out]	- output RGB data
+    width  [In]		- image width
+	height [In]		- image height
+
+  Modified: 2019.8.9
+********************************************************************/
 int NV21ToBGR24(unsigned char *pYUV, unsigned char *pBGR24, int width, int height)
 {
 	int bgr[3];
@@ -62,16 +62,16 @@ int NV21ToBGR24(unsigned char *pYUV, unsigned char *pBGR24, int width, int heigh
 
 
 /*********************************************************************
-/* Function: BGR24toNV21
-/* Usage: colorspace convertion from BGR24 to YUV420SP(NV21)
-/* Parameters:
-/* 	pBGR24  [In]		- source RGB data
-/*	pYUV    [Out]		- output YUV data
-/*  width   [In]		- image width
-/*	height  [In]		- image height
-/*
-/* Modified: 2019.8.9
-/*********************************************************************/
+  Function: BGR24toNV21
+  Usage: colorspace convertion from BGR24 to YUV420SP(NV21)
+  Parameters:
+ 	pBGR24  [In]		- source RGB data
+	pYUV    [Out]		- output YUV data
+    width   [In]		- image width
+ 	height  [In]		- image height
+
+    Modified: 2019.8.9
+********************************************************************/
 int BGR24toNV21(unsigned char *pBGR24, unsigned char *pYUV, int width, int height)
 {
 	int i,j,index;
@@ -116,7 +116,7 @@ int BGR24toNV21(unsigned char *pBGR24, unsigned char *pYUV, int width, int heigh
 int main(int argc, char *argv[])
 {
 	FILE *fin, *fou;
-	unsigned char *pInYUVBuf, *pYBuf, *pUBuf, *pVBuf;
+    unsigned char *pInYUVBuf, *pYBuf; // *pUBuf, *pVBuf;
 	unsigned char *pBGRBuf;
 
 	int index, framesize;
@@ -124,7 +124,9 @@ int main(int argc, char *argv[])
 	if (argc < 4)
 	{
 		printf("Usage: NV21toBGR24.exe inputYUV outputYUV width height framenum\n");
+#if WIN32
 		system("pause");
+#endif
 		return -1;
 	}
 
@@ -188,7 +190,7 @@ int main(int argc, char *argv[])
 		fwrite(pInYUVBuf, 1, width*height*3/2, fou);
 
 		index++;
-		printf("[demo] info: %d frame process ok!!!\n", index);
+		printf("[CSConvertKit] NV21toBGR24: %d frame process ok!!!\n", index);
 
 	}
 

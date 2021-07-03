@@ -12,8 +12,10 @@ int main(int argc, char** argv)
 	if (argc != 5)
 	{
 		printf("\nUsage: NV12toYVYU.exe infile outfile width height\n\n");
+#if WIN32
 		system("pause");
-		return -1;
+#endif
+        return -1;
 	}
 	fin = fopen(argv[1], "rb");
 	if (fin == NULL)
@@ -80,7 +82,7 @@ int main(int argc, char** argv)
 		printf("%dth frame ok!!\n", frame_num);
 		frame_num++;
 	}
-	printf("NV12 to YVYU successfully!!,total frames: %d\n", frame_num);
+	printf("[CSConvertKit] NV12 to YVYU successfully!!,total frames: %d\n", frame_num);
 
 	free(y);
 	y = NULL;

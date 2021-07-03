@@ -14,8 +14,10 @@ int main(int argc, char** argv)
 	if (argc != 4)
 	{
 		printf("\nUsage:NV12toYV12.exe input.yuv width height\n\n");
-		system("pause");
-		return -1;
+#if WIN32
+        system("pause");
+#endif
+        return -1;
 	}
 	fin = fopen(argv[1], "rb");
 	if (fin == NULL)
@@ -42,8 +44,13 @@ int main(int argc, char** argv)
 		return -1;
 	}
 	memset(outname, 0, sizeof(outname));
+#if WIN32
 	sprintf_s(outname, "%s_YV12.yuv", argv[1]);
-	fou = fopen(outname, "wb");
+#else
+    sprintf(outname, "%s_YV12.yuv", argv[1]);
+#endif
+    
+    fou = fopen(outname, "wb");
 	if (fou == NULL)
 	{
 		printf("error: open %s fail\n", outname);
@@ -68,7 +75,7 @@ int main(int argc, char** argv)
 		printf("%dth frame ok!!\n", frame_num);
 		frame_num++;
 	}
-	printf("NV12 to YV12 successfully!!,total frames: %d\n", frame_num);
+	printf("[CSConvertKit] NV12 to YV12 successfully!!,total frames: %d\n", frame_num);
 
 	free(y);
 	y = NULL;

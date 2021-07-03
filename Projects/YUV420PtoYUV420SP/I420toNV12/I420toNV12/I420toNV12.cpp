@@ -13,7 +13,9 @@ int main(int argc, char** argv)
 	if (argc != 4)
 	{
 		printf("\nUsage:I420toNV12.exe input.yuv width height\n\n");
+#if WIN32
 		system("pause");
+#endif
 		return -1;
 	}
 	fin = fopen(argv[1], "rb");
@@ -43,8 +45,13 @@ int main(int argc, char** argv)
 		return -1;
 	}
 	memset(outname, 0, sizeof(outname));
-	sprintf_s(outname, "%s_NV12.yuv", argv[1]);
-	fou = fopen(outname, "wb");
+#if WIN32
+	sprintfs(outname, "%s_NV12.yuv", argv[1]);
+#else
+    sprintf(outname, "%s_NV12.yuv", argv[1]);
+#endif
+    
+    fou = fopen(outname, "wb");
 	if (fou == NULL)
 	{
 		printf("error: open %s fail\n", outname);
@@ -74,7 +81,7 @@ int main(int argc, char** argv)
 
 		frame_num++;
 	} 
-	printf("I420 to NV12 successfully!!, total frames: %d\n",frame_num);
+	printf("[CSConverKit] I420 to NV12 successfully!!, total frames: %d\n", frame_num);
 
 	free(y);
 	y = NULL;

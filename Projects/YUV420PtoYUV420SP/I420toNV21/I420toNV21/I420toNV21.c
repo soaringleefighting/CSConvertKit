@@ -14,7 +14,9 @@ int main(int argc, char** argv)
 	if (argc != 4)
 	{
 		printf("\nUsage:I420toNV21.exe input.yuv width height\n\n");
-		system("pause");
+#if WIN32		
+		system("pause");		
+#endif
 		return -1;
 	}
 	fin = fopen(argv[1], "rb");
@@ -75,7 +77,7 @@ int main(int argc, char** argv)
 
 		frame_num++;
 	}
-	printf("I420 to NV21 successfully!!, total frames: %d\n", frame_num);
+	printf("[CSConverKit] I420 to NV21 successfully!!, total frames: %d\n", frame_num);
 
 	free(y);
 	y = NULL;

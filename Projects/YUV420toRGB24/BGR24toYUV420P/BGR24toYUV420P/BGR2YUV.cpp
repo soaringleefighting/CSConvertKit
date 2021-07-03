@@ -12,17 +12,17 @@ using namespace cv;
 
 #define CLIP_COLOR(x) ((unsigned char)((x<0)?0:((x>255)?255:x)))
 
-/*********************************************************************
-/* Function: YUV420pToBGR24
-/* Usage: colorspace convertation from YUV420P(I420) to BGR24
-/* Parameters:
-/* 	pYUV   [In]		- source YUV data
-/*	pBGR24 [Out]	- output RGB data
-/*  width  [In]		- image width
-/*	height [In]		- image height
-/*
-/* Modified: 2019.7.13
-/*********************************************************************/
+/******************************************************************
+ Function: YUV420pToBGR24
+ Usage: colorspace convertation from YUV420P(I420) to BGR24
+ Parameters:
+ 	pYUV   [In]		- source YUV data
+	pBGR24 [Out]	- output RGB data
+    width  [In]		- image width
+	height [In]		- image height
+
+ Modified: 2019.7.13
+*********************************************************************/
 int YUV420pToBGR24(unsigned char *pYUV, unsigned char *pBGR24, int width, int height)
 {
 	int bgr[3];
@@ -62,16 +62,16 @@ int YUV420pToBGR24(unsigned char *pYUV, unsigned char *pBGR24, int width, int he
 
 
 /*********************************************************************
-/* Function: BGR24toYUV420P
-/* Usage: colorspace convertation from BGR24 to YUV420P(I420)
-/* Parameters:
-/* 	pBGR24  [In]		- source RGB data
-/*	pYUV    [Out]		- output YUV data
-/*  width   [In]		- image width
-/*	height  [In]		- image height
-/*
-/* Modified: 2019.7.13
-/*********************************************************************/
+Function: BGR24toYUV420P
+Usage: colorspace convertation from BGR24 to YUV420P(I420)
+Parameters:
+ 	pBGR24  [In]		- source RGB data
+	pYUV    [Out]		- output YUV data
+    width   [In]		- image width
+	height  [In]		- image height
+
+ Modified: 2019.7.13
+********************************************************************/
 int BGR24toYUV420P(unsigned char *pBGR24, unsigned char *pYUV, int width, int height)
 {
 	int i,j,index;
@@ -126,8 +126,10 @@ int main(int argc, char *argv[])
 	if (argc < 4)
 	{
 		printf("Usage: ./BGR24toYUV420P.exe inputYUV outputYUV width height\n");
+#if WIN32
 		system("pause");
-		return -1;
+#endif
+        return -1;
 	}
 
 	char* input = argv[1];
@@ -189,7 +191,7 @@ int main(int argc, char *argv[])
 		fwrite(pInYUVBuf, 1, width*height*3/2, fou);
 
 		index++;
-		printf("[demo] info: %d frame process ok!!!\n", index);
+		printf("[CSConvertKit] BGR24toYUV420P: %d frame process ok!!!\n", index);
 
 	}
 

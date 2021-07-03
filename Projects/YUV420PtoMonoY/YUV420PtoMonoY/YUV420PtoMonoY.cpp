@@ -7,15 +7,17 @@ int main(int argc, char** argv)
 	int width, height;
 	int frame_size, frame_size_y;
 	FILE *fin, *fou;
-	char *y, *u, *v,*u1,*v1;
-	int i, frame_num = 0;
+	char *y;
+	int  frame_num = 0;
 	char outname[512] = { 0, };
 	
 	if (argc != 5)
 	{
 		printf("\nUsage:YUV420PtoMonoY.exe input.yuv output.yuv width height\n\n");
+#if WIN32
 		system("pause");
-		return -1;
+#endif
+        return -1;
 	}
 	fin = fopen(argv[1], "rb");
 	if (fin == NULL)
@@ -24,8 +26,12 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
+#if WIN32
 	sprintf_s(outname,"%s", argv[2]);
-
+#else
+    sprintf(outname,"%s", argv[2]);
+#endif
+    
 	width = atoi(argv[3]);
 	height = atoi(argv[4]);
 
@@ -54,7 +60,7 @@ int main(int argc, char** argv)
 		printf("%dth frame ok!!\n", frame_num);
 		frame_num++;
 	}
-	printf("YUV420P to MonoY successfully!!, total frames: %d\n",frame_num);
+	printf("[CSConverKit] YUV420P to MonoY successfully!!, total frames: %d\n",frame_num);
 	
 	free(y);
 	y = NULL;

@@ -1,24 +1,23 @@
 # CSConvertKit
 
-CSConvertKit is a series of projects for Converting YUV colorspace, such as YUV420P(I420,YV12),YUV420SP(NV21,NV12), NV16, RGB24, BGR24,
-YUV422P, YUV444 and so on.
+CSConvertKit is a series of tools for converting YUV colorspace, such as YUV420P(I420,YV12),YUV420SP(NV21,NV12), NV16, RGB24, BGR24,YUV422P, YUV444 and so on.
 
 
-## 1¡¢²Î¿¼
+## 1ã€å‚è€ƒ
 
-¡¾CodecsÏµÁĞ¡¿ÑÕÉ«¿Õ¼ä×ª»»CSConvertÏµÁĞ»ã×Ü: https://blog.csdn.net/SoaringLee_fighting/article/details/95213543
+ã€Codecsç³»åˆ—ã€‘é¢œè‰²ç©ºé—´è½¬æ¢CSConvertç³»åˆ—æ±‡æ€»: https://blog.csdn.net/SoaringLee_fighting/article/details/95213543
 
-## 2¡¢Ö§³Ö¹¦ÄÜ
+## 2ã€æ”¯æŒåŠŸèƒ½
 
-ËµÃ÷£ºµ±Ç°Ö§³ÖÏÂÃæ6´óÀàÑÕÉ«¿Õ¼ä×ª»»¹¦ÄÜ¡£
+è¯´æ˜ï¼šå½“å‰æ”¯æŒä¸‹é¢6å¤§ç±»ï¼ˆ14ç§ï¼‰é¢œè‰²ç©ºé—´è½¬æ¢åŠŸèƒ½ã€‚
 
-### 2.1¡¢YUV420ÓëYUV400Ïà»¥×ª»»
+### 2.1ã€YUV420ä¸YUV400ç›¸äº’è½¬æ¢
 
-¹¦ÄÜ£º ÊµÏÖYUV420P×ª»»³ÉÁÁ¶È·ÖÁ¿Y¡£
+åŠŸèƒ½ï¼š å®ç°YUV420Pè½¬æ¢æˆäº®åº¦åˆ†é‡Yã€‚
 
 Usage:YUV420PtoMonoY.exe input.yuv output.yuv width height
 
-### 2.2¡¢YUV420PÓëYUV420SPÏà»¥×ª»»
+### 2.2ã€YUV420Pä¸YUV420SPç›¸äº’è½¬æ¢
 
 (1) I420toNV12
 
@@ -48,7 +47,7 @@ Usage: NV12toYVYU.exe infile outfile width height
 
 Usage: NV21toYV12.exe input.yuv width height
 
-### 2.3¡¢YUV420ÓëRGB24Ïà»¥×ª»»
+### 2.3ã€YUV420ä¸RGB24ç›¸äº’è½¬æ¢
 
 (1) yuv420ptoRGB24
 
@@ -62,27 +61,40 @@ Usage: NV21toBGR24.exe inputYUV outputYUV width height framenum
 
 Usage: ./BGR24toYUV420P.exe inputYUV outputYUV width height
 
-### 2.4¡¢YUV420ÓëYUV422Ïà»¥×ª»»
+### 2.4ã€YUV420ä¸YUV422ç›¸äº’è½¬æ¢
 
 (1) YUV420PtoYUV422
 
 Usage:YUV420PtoYUV422.exe inputfile outputfile width height
 
-### 2.5¡¢YUV420ÓëYUV444Ïà»¥×ª»»
+### 2.5ã€YUV420ä¸YUV444ç›¸äº’è½¬æ¢
 
 (1) YUV420toYUV444
 
 Usage:YUV420toYUV444.exe inputfile outputfile width height
 
-### 2.6¡¢YUV422PÓëYUV422SPÏà»¥×ª»»
+### 2.6ã€YUV422Pä¸YUV422SPç›¸äº’è½¬æ¢
 
 (1) YUV422PtoNV16
 
 Usage: YUV422PtoNV16.exe input.yuv width height
 
 
-## 3¡¢Ä¿Â¼½á¹¹ËµÃ÷
+## 3ã€ç›®å½•ç»“æ„è¯´æ˜
 
-bin			: windowsÆ½Ì¨ÏÂµÄ¿ÉÖ´ĞĞÎÄ¼ş
+â”œâ”€â”€ LICENSE		ï¼šLicenseæ–‡ä»¶
+â”œâ”€â”€ Projects	ï¼šé¢œè‰²ç©ºé—´è½¬æ¢å·¥å…·çš„windowså¹³å°vs2013å·¥ç¨‹ 
+â”œâ”€â”€ README.md	ï¼šæœ¬æ–‡ä»¶
+â”œâ”€â”€ bin			ï¼šå„å¹³å°çš„å¯æ‰§è¡Œæ–‡ä»¶ 
+â””â”€â”€ build		ï¼šLinuxå¹³å°å’ŒmacOSå¹³å°ç¼–è¯‘è„šæœ¬ 
 
-Projects	: ÑÕÉ«¿Õ¼ä×ª»»¹¤¾ßµÄwindowsÆ½Ì¨vs2013¹¤³Ì 
+## 4ã€Revision History
+
+- v1.0(2020.7.1):
+Feature:
+1ã€é¢œè‰²ç©ºé—´è½¬æ¢å·¥å…·é›†ï¼šYUV420P(I420/YV12),YUV420SP(NV12/NV21),YUV422P,YUV422SP(NV16),YUV444,RGB24ã€‚
+2ã€å¹³å°æ”¯æŒï¼šWindowså¹³å°ã€‚
+
+- v1.1(2021.7.3):
+Feature:
+1ã€é¢œè‰²ç©ºé—´è½¬æ¢å·¥å…·é›†æ”¯æŒLinuxå¹³å°å’ŒmacOSå¹³å°ã€‚

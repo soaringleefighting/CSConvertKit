@@ -18,8 +18,10 @@ int main(int argc, char** argv)
 	if (argc < 5)
 	{
 		printf("\nUsage:YUV420toYUV444.exe inputfile outputfile width height\n\n");
-		system("pause");
-		return -1;
+#if WIN32
+        system("pause");
+#endif
+        return -1;
 	}
 
 	fp_in = fopen(argv[1], "rb");
@@ -48,8 +50,8 @@ int main(int argc, char** argv)
 	u1 = y1 + width*height;
 	v1 = u1 + width*height / 4;
 
-	y2 = (char *)malloc(frame_size*3);
-	if (NULL== y2 )
+	y2 = (unsigned char *)malloc(frame_size*3);
+	if (NULL == y2 )
 	{
 		printf("malloc y2 fail\n");
 		return -1;
@@ -76,7 +78,7 @@ int main(int argc, char** argv)
 		n++;
 	}
 
-	printf("YUV420toYUV444 successfully!!,total frames: %d\n",n);
+	printf("[CSConvertKit] YUV420toYUV444 successfully!!,total frames: %d\n", n);
 
 	free(y1);
 	y1 = NULL;

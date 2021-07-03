@@ -9,7 +9,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#if WIN32
 #include <windows.h>
+
 
 int bmp24_write(unsigned char *image, int xsize, int ysize, FILE *pfile)
 {
@@ -42,6 +44,7 @@ int bmp24_write(unsigned char *image, int xsize, int ysize, FILE *pfile)
 
 	return 0;
 }
+#endif
 
 int rgb24_write(unsigned char *image, int xsize, int ysize, FILE *pfile)
 {
@@ -166,17 +169,19 @@ int main(int argc, char** argv)
 		yuv420toRGB24(yuv420, rgb24, width, height, bmp_flag);
 		printf("%dth frames ok!!!\n", framenum);
 		framenum++;
+#if WIN32
 		if (bmp_flag)//++单帧yuv转成bmp图像
 		{
 			bmp24_write(rgb24, width, height, rgb_file);
 		}
 		else//++多帧yuv转成rgb24格式视频
-		{
+#endif
+        {
 			rgb24_write(rgb24, width, height, rgb_file);
 		}
 	}
 
-	printf("yuv420p to RGB24 succeessfully!!,total frames: %d\n", frameno);
+	printf("[CSConvertKit] yuv420p to RGB24 succeessfully!!,total frames: %d\n", frameno);
 
 	free(yuv420);
 	yuv420 = NULL;

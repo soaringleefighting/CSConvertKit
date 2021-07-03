@@ -94,14 +94,16 @@ int main(int argc, char** argv)
 	int frame_size;
 	FILE *fin, *fou;
 	unsigned char *y, *nv16;
-	int i, frame_num = 0;
+	int frame_num = 0;
 	char outname[512]="out_NV16.yuv";
 
 	if (argc != 4)
 	{
 		printf("\nUsage: YUV422PtoNV16.exe input.yuv width height\n\n");
-		system("pause");
-		return -1;
+#if WIN32
+        system("pause");
+#endif
+        return -1;
 	}
 	fin = fopen(argv[1], "rb");
 	if (fin == NULL)
@@ -149,7 +151,7 @@ int main(int argc, char** argv)
 
 		frame_num++;
 	} 
-	printf("YUV422P to NV16 successfully!!, total frames: %d\n",frame_num);
+	printf("[CSConvertKit] YUV422P to NV16 successfully!!, total frames: %d\n", frame_num);
 
 	free(y);
 	y = NULL;

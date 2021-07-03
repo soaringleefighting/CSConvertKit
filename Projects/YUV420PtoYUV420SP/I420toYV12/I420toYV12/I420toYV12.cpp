@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,7 +14,9 @@ int main(int argc, char** argv)
 	if (argc != 4)
 	{
 		printf("\nUsage:I420toYV12.exe input.yuv width height\n\n");
+#if WIN32		
 		system("pause");
+#endif
 		return -1;
 	}
 	fin = fopen(argv[1], "rb");
@@ -45,7 +46,12 @@ int main(int argc, char** argv)
 		return -1;
 	}
 	memset(outname, 0, sizeof(outname));
+#if WIN32
 	sprintf_s(outname, "%s_YV12.yuv", argv[1]);
+#else
+	sprintf(outname, "%s_YV12.yuv", argv[1]);
+#endif
+
 	fou = fopen(outname, "wb");
 	if (fou == NULL)
 	{
@@ -74,7 +80,7 @@ int main(int argc, char** argv)
 		printf("%dth frame ok!!\n", frame_num);
 		frame_num++;
 	}
-	printf("I420 to YV12 successfully!!,total frames: %d\n",frame_num);
+	printf("[CSConverKit] I420 to YV12 successfully!!,total frames: %d\n", frame_num);
 	
 	free(y);
 	y = NULL;

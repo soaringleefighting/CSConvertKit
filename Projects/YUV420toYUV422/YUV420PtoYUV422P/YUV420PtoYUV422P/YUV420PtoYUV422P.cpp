@@ -16,8 +16,10 @@ int main(int argc, char** argv)
 	if (argc < 5)
 	{
 		printf("\nUsage:YUV420PtoYUV422.exe inputfile outputfile width height\n\n");
+#if WIN32
 		system("pause");
-		return -1;
+#endif
+        return -1;
 	}
 
 	fp_in = fopen(argv[1], "rb");
@@ -81,7 +83,7 @@ int main(int argc, char** argv)
 		printf("%dth frame process ok!!!\n", n);
 	}
 
-	printf("YUV420toYUV422 successfully!!, total frames: %d\n",n);
+	printf("[CSConverKit] YUV420toYUV422 successfully!!, total frames: %d\n",n);
 
 	free(y1);
 	y1 = NULL;
