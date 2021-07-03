@@ -2,6 +2,8 @@
 
 CSConvertKit is a series of tools for converting YUV colorspace, such as YUV420P(I420,YV12),YUV420SP(NV21,NV12), NV16, RGB24, BGR24,YUV422P, YUV444 and so on.
 
+## 0、支持平台
+Windows, Linux, macOS(Apple Silicon)
 
 ## 1、参考
 
@@ -82,19 +84,19 @@ Usage: YUV422PtoNV16.exe input.yuv width height
 
 ## 3、目录结构说明
 
-├── LICENSE		：License文件
-├── Projects	：颜色空间转换工具的windows平台vs2013工程 
-├── README.md	：本文件
-├── bin			：各平台的可执行文件 
-└── build		：Linux平台和macOS平台编译脚本 
+├── LICENSE		：License文件<br>
+├── Projects	：颜色空间转换工具的windows平台vs2013工程<br>
+├── README.md	：本文件<br>
+├── bin			：各平台的可执行文件<br>
+└── build		：Linux平台和macOS平台编译脚本<br>
 
 ## 4、Revision History
 
-- v1.0(2020.7.1):
-Feature:
-1、颜色空间转换工具集：YUV420P(I420/YV12),YUV420SP(NV12/NV21),YUV422P,YUV422SP(NV16),YUV444,RGB24。
-2、平台支持：Windows平台。
+- v1.0(2020.7.1):<br>
+Feature:<br>
+1、颜色空间转换工具集：YUV420P(I420/YV12),YUV420SP(NV12/NV21),YUV422P,YUV422SP(NV16),YUV444,RGB24。<br>
+2、平台支持：Windows平台。<br>
 
-- v1.1(2021.7.3):
-Feature:
-1、颜色空间转换工具集支持Linux平台和macOS平台。
+- v1.1(2021.7.3):<br>
+Feature:<br>
+1、颜色空间转换工具集支持Linux平台和macOS平台。<br>
